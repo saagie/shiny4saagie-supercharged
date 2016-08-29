@@ -2,8 +2,7 @@ FROM saagie/shiny4saagie
 
 MAINTAINER Saagie
 
-RUN apt-get update -qq \
-	&& apt-get dist-upgrade -y
+RUN apt-get update
 
 RUN apt-get install -y --no-install-recommends -t unstable \
 	bwidget \ 
@@ -56,8 +55,8 @@ RUN xvfb-run -a install.r \
 	&& installGithub.r s-u/fastshp \
 	&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
-RUN echo 'install.packages(c("shinydashboard", "rgdal", 
-	"Cairo", "lubridate", "dplyr", "tidyr", 
-	"leaflet", "DT", "ggmap"),
+RUN echo 'install.packages(c("shinydashboard", "rgdal", \
+	"Cairo", "lubridate", "dplyr", "tidyr",  \
+	"leaflet", "DT", "ggmap"), \
 	repos="https://https://cloud.r-project.org")' > /tmp/packages.R \
 	&& Rscript /tmp/packages.R
