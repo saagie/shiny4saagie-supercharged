@@ -2,8 +2,7 @@ FROM saagie/shiny4saagie
 
 MAINTAINER Saagie
 
-RUN apt-get update -qq \
-	&& apt-get dist-upgrade -y
+RUN apt-get update
 
 RUN apt-get install -y --no-install-recommends -t unstable \
 	bwidget \ 
